@@ -7,7 +7,7 @@ sourceCompatibility = '1.7'
 def jmerepo='com.github.jmonkeyengine.jMonkeyEngine'
 def jmeversion='v3.2.0-stable'
 
-mainClassName = 'mygame.Main'
+mainClassName = 'com.aegroto.snexample.Main'
 
 repositories {
     mavenCentral()

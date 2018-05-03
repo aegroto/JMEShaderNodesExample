@@ -1,0 +1,24 @@
+MaterialDef Unshaded {
+
+    MaterialParameters {
+        Texture2D Tex
+        Float TransformSpeed
+    }
+
+    
+    Technique {
+        VertexShader GLSL100:   naive material/Naive.vert
+        FragmentShader GLSL100: naive material/Naive.frag
+
+        WorldParameters {
+            WorldViewProjectionMatrix
+            ViewProjectionMatrix
+            ViewMatrix
+            Time
+        }
+
+        Defines {
+            TRANSFORM : TransformSpeed
+        }
+    }
+}

@@ -1,2 +1,2 @@
 include 'assets'
-rootProject.name = 'JMEVSCodeTemplate'
+rootProject.name = 'Shader Nodes example'
