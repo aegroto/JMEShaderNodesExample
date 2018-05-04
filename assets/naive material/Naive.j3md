@@ -2,6 +2,7 @@ MaterialDef Unshaded {
 
     MaterialParameters {
         Texture2D Tex
+        Float TexScale : 1.0
         Float TransformSpeed
     }
 
