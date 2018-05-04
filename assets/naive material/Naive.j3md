@@ -4,6 +4,8 @@ MaterialDef Unshaded {
         Texture2D Tex
         Float TexScale : 1.0
         Float TransformSpeed
+
+        Float MeshScale
     }
 
     
@@ -20,6 +22,7 @@ MaterialDef Unshaded {
 
         Defines {
             TRANSFORM : TransformSpeed
+            SCALING : MeshScale
         }
     }
 }

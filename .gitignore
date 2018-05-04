@@ -1,2 +1,11 @@
 .gradle/
+.settings/
+.project
+.classpath
 build/
+bin/
+
+assets/.settings
+assets/.classpath
+assets/.project
+assets/bin
