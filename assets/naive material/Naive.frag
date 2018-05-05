@@ -11,7 +11,7 @@ void main() {
     #endif
 
     #ifdef COLORED
-        outColor = (outColor + m_OverlayColor) / 2.0;
+        outColor += m_OverlayColor;
     #endif
 
     gl_FragColor = outColor;
