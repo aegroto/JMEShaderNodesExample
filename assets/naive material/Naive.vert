@@ -9,10 +9,12 @@ attribute vec2 inTexCoord;
 varying vec2 texCoord;
 
 void main() {
-    texCoord = inTexCoord;
+    #ifdef TEXTURED
+        texCoord = inTexCoord;
+    #endif
+
     vec3 vVertex = inPosition;
 
-    // Transform
     #ifdef TRANSFORM
         float angle = g_Time * m_TransformSpeed;
 

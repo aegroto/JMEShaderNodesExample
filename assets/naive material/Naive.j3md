@@ -3,6 +3,8 @@ MaterialDef Unshaded {
     MaterialParameters {
         Texture2D Tex
         Float TexScale : 1.0
+        Color OverlayColor
+
         Float TransformSpeed
 
         Float MeshScale
@@ -21,6 +23,8 @@ MaterialDef Unshaded {
         }
 
         Defines {
+            TEXTURED : Tex
+            COLORED : OverlayColor
             TRANSFORM : TransformSpeed
             SCALING : MeshScale
         }

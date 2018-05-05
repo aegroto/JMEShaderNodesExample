@@ -5,15 +5,17 @@ import com.jme3.input.KeyInput;
 import com.jme3.input.controls.AnalogListener;
 import com.jme3.input.controls.KeyTrigger;
 import com.jme3.material.Material;
-import com.jme3.math.FastMath;
-import com.jme3.math.Quaternion;
+import com.jme3.math.ColorRGBA;
 import com.jme3.renderer.RenderManager;
 import com.jme3.scene.Geometry;
 import com.jme3.scene.shape.Box;
 import com.jme3.texture.Texture;
 
 public class Main extends SimpleApplication implements AnalogListener {
+    private static float COLOR_UNIT = 2f / 255f;
+
     private Material mat;
+    private ColorRGBA matColor = ColorRGBA.Black;
     private float meshScale = 1f;
 
     public static void main(String[] args) {
@@ -32,20 +34,28 @@ public class Main extends SimpleApplication implements AnalogListener {
         mat = new Material(assetManager, "naive material/Naive.j3md");
         Texture texture = assetManager.loadTexture("textures/monkey texture.png");
         texture.setWrap(Texture.WrapMode.Repeat);
-        mat.setTexture("Tex", texture);
 
-        mat.setFloat("TexScale", .35f);
+        mat.setTexture("Tex", texture);
+        mat.setColor("OverlayColor", matColor);
+
+        mat.setFloat("TexScale", 1f);
         mat.setFloat("TransformSpeed", 2f);
         mat.setFloat("MeshScale", meshScale);
 
         geom.setMaterial(mat);
 
         rootNode.attachChild(geom);
-        // geom.setLocalRotation(new Quaternion().fromAngles(-FastMath.QUARTER_PI, 0f, 0f));
+
+        inputManager.addMapping("RedUp", new KeyTrigger(KeyInput.KEY_R));
+        inputManager.addMapping("GreenUp", new KeyTrigger(KeyInput.KEY_G));
+        inputManager.addMapping("BlueUp", new KeyTrigger(KeyInput.KEY_B));
+        inputManager.addMapping("RedDown", new KeyTrigger(KeyInput.KEY_T));
+        inputManager.addMapping("GreenDown", new KeyTrigger(KeyInput.KEY_H));
+        inputManager.addMapping("BlueDown", new KeyTrigger(KeyInput.KEY_N));
 
         inputManager.addMapping("ScaleUp", new KeyTrigger(KeyInput.KEY_U));
         inputManager.addMapping("ScaleDown", new KeyTrigger(KeyInput.KEY_J));
-        inputManager.addListener(this, "ScaleUp", "ScaleDown");
+        inputManager.addListener(this, "ScaleUp", "ScaleDown", "RedUp", "GreenUp", "BlueUp", "RedDown", "GreenDown", "BlueDown");
     }
 
     @Override
@@ -61,6 +71,30 @@ public class Main extends SimpleApplication implements AnalogListener {
                     mat.setFloat("MeshScale", meshScale);
                 }
                 break;
+            case "RedUp" :
+                matColor.addLocal(new ColorRGBA(COLOR_UNIT, 0f, 0f, 0f));
+                mat.setColor("OverlayColor", matColor);
+                break;
+            case "GreenUp" :
+                matColor.addLocal(new ColorRGBA(0f, COLOR_UNIT, 0f, 0f));
+                mat.setColor("OverlayColor", matColor);
+                break;
+            case "BlueUp" :
+                matColor.addLocal(new ColorRGBA(0f, 0f, COLOR_UNIT, 0f));
+                mat.setColor("OverlayColor", matColor);
+                break;
+            case "RedDown" :
+                matColor.addLocal(new ColorRGBA(-COLOR_UNIT, 0f, 0f, 0f));
+                mat.setColor("OverlayColor", matColor);
+                break;
+            case "GreenDown" :
+                matColor.addLocal(new ColorRGBA(0f, -COLOR_UNIT, 0f, 0f));
+                mat.setColor("OverlayColor", matColor);
+                break;
+            case "BlueDown" :
+                matColor.addLocal(new ColorRGBA(0f, 0f, -COLOR_UNIT, 0f));
+                mat.setColor("OverlayColor", matColor);
+                break;            
         }
     }
 
