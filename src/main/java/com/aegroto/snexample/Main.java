@@ -27,7 +27,11 @@ public class Main extends SimpleApplication implements AnalogListener {
     @Override
     public void simpleInitApp() {
         flyCam.setMoveSpeed(20f);
-        // Sphere b = new Sphere(150, 150, 2f);
+        initTestGeomAndMaterial();
+        initInputs();
+    }
+
+    private void initTestGeomAndMaterial() {
         Box b = new Box(1, 1, 1);
         Geometry geom = new Geometry("Box", b);
 
@@ -45,7 +49,9 @@ public class Main extends SimpleApplication implements AnalogListener {
         geom.setMaterial(mat);
 
         rootNode.attachChild(geom);
+    }
 
+    private void initInputs() {
         inputManager.addMapping("RedUp", new KeyTrigger(KeyInput.KEY_R));
         inputManager.addMapping("GreenUp", new KeyTrigger(KeyInput.KEY_G));
         inputManager.addMapping("BlueUp", new KeyTrigger(KeyInput.KEY_B));
@@ -62,12 +68,13 @@ public class Main extends SimpleApplication implements AnalogListener {
     public void onAnalog(String name, float value, float tpf) {
         switch(name) {
             case "ScaleUp" :
-                meshScale += .1f;
+                meshScale += .05f;
                 mat.setFloat("MeshScale", meshScale);
                 break;
             case "ScaleDown" :
                 if(meshScale > 0f) {
-                    meshScale -= .1f;
+                    meshScale -= .05f;
+                    if(meshScale < 0f) meshScale = 0f;
                     mat.setFloat("MeshScale", meshScale);
                 }
                 break;
