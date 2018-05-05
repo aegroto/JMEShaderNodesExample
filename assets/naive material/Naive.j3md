@@ -1,4 +1,4 @@
-MaterialDef Unshaded {
+MaterialDef NaiveMaterial {
 
     MaterialParameters {
         Texture2D Tex
