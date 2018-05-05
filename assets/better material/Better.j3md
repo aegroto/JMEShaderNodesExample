@@ -1,0 +1,92 @@
+MaterialDef BetterMaterial {
+
+    MaterialParameters {
+        Texture2D Tex
+        Float TexScale : 1.0
+        Color OverlayColor
+
+        Float RotationSpeed
+
+        Float MeshScale
+    }
+
+    
+    Technique {
+        WorldParameters {
+            WorldViewProjectionMatrix
+            Time
+        }
+
+        VertexShaderNodes {
+            ShaderNode VertexRotation {
+                Definition : VertexRotation : better material/nodes/vertex/VertexRotation/VertexRotation.j3sn
+                Condition : RotationSpeed
+
+                InputMappings {
+                    gTime = WorldParam.Time;
+                    mRotationSpeed = MatParam.RotationSpeed;
+
+                    inPosition = Attr.inPosition; 
+                }
+            }
+
+            ShaderNode VertexScaling {
+                Definition : VertexScaling : better material/nodes/vertex/VertexScaling/VertexScaling.j3sn
+                Condition : MeshScale
+
+                InputMappings {
+                    mMeshScale = MatParam.MeshScale;
+
+                    inPosition = VertexRotation.rotatedPosition;
+                }
+            }
+
+            ShaderNode VertexTexturing {
+                Definition : VertexTexturing : better material/nodes/vertex/VertexTexturing/VertexTexturing.j3sn
+                Condition : Tex
+
+                InputMappings {
+                    inTexCoord = Attr.inTexCoord;
+                }
+            }
+
+            ShaderNode VertexProjection {
+                Definition : VertexProjection : better material/nodes/vertex/VertexProjection/VertexProjection.j3sn
+
+                InputMappings {
+                    gWorldViewProjectionMatrix = WorldParam.WorldViewProjectionMatrix;
+                    vVertex = VertexScaling.scaledPosition;  
+                }
+
+                OutputMappings {
+                    Global.outPosition = projectedPosition;
+                }
+            }            
+        }
+
+        FragmentShaderNodes {
+            ShaderNode FragmentTexturing {
+                Definition : FragmentTexturing : better material/nodes/fragment/FragmentTexturing/FragmentTexturing.j3sn
+
+                InputMappings {
+                    mTex = MatParam.Tex
+                    texCoord = VertexTexturing.texCoord
+                    mTexScale = MatParam.TexScale
+                }
+            }
+
+            ShaderNode FragmentColor {
+                Definition : FragmentColor : better material/nodes/fragment/FragmentColor/FragmentColor.j3sn
+
+                InputMappings {
+                    fragmentColor = FragmentTexturing.outputColor;
+                    overlayColor = MatParam.OverlayColor; 
+                }
+
+                OutputMappings {
+                    Global.outColor = outputColor;
+                }
+            }
+        }
+    }
+}

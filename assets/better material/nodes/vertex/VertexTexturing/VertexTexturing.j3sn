@@ -1,0 +1,18 @@
+ShaderNodeDefinitions {
+    ShaderNodeDefinition VertexTexturing {      
+        Type: Vertex
+        Shader GLSL100: better material/nodes/vertex/VertexTexturing/VertexTexturing.vert
+
+        Documentation {
+            Trasmits texCoord to successive nodes
+        }
+
+        Input {
+            vec2 inTexCoord;      
+        }
+
+        Output {
+            vec2 texCoord;
+        }
+    }
+}

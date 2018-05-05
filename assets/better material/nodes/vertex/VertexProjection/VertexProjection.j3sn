@@ -1,0 +1,19 @@
+ShaderNodeDefinitions {
+    ShaderNodeDefinition VertexProjection {      
+        Type: Vertex
+        Shader GLSL100: better material/nodes/vertex/VertexProjection/VertexProjection.vert
+
+        Documentation {
+            Projects vertex position to world view position
+        }
+
+        Input {
+            mat4 gWorldViewProjectionMatrix;
+            vec3 vVertex;     
+        }
+
+        Output {
+            vec4 projectedPosition;
+        }
+    }
+}

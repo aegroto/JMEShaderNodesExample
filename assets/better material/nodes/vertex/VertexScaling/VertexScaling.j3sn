@@ -1,0 +1,20 @@
+ShaderNodeDefinitions {
+    ShaderNodeDefinition VertexScaling {      
+        Type: Vertex
+        Shader GLSL100: better material/nodes/vertex/VertexScaling/VertexScaling.vert
+
+        Documentation {
+            Scales vertices
+        }
+
+        Input {
+            float mMeshScale;
+
+            vec3 inPosition;      
+        }
+
+        Output {
+            vec3 scaledPosition;
+        }
+    }
+}

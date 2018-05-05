@@ -35,7 +35,7 @@ public class Main extends SimpleApplication implements AnalogListener {
         Box b = new Box(1, 1, 1);
         Geometry geom = new Geometry("Box", b);
 
-        mat = new Material(assetManager, "naive material/Naive.j3md");
+        mat = new Material(assetManager, "better material/Better.j3md");
         Texture texture = assetManager.loadTexture("textures/monkey texture.png");
         texture.setWrap(Texture.WrapMode.Repeat);
 

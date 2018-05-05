@@ -1,0 +1,21 @@
+ShaderNodeDefinitions {
+    ShaderNodeDefinition VertexRotation {      
+        Type: Vertex
+        Shader GLSL100: better material/nodes/vertex/VertexRotation/VertexRotation.vert
+
+        Documentation {
+            Rotates vertices
+        }
+
+        Input {
+            float gTime;
+            float mRotationSpeed;
+
+            vec3 inPosition;      
+        }
+
+        Output {
+            vec3 rotatedPosition;
+        }
+    }
+}

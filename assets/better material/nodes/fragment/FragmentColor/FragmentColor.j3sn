@@ -1,0 +1,19 @@
+ShaderNodeDefinitions {
+    ShaderNodeDefinition FragmentColor {      
+        Type: Fragment
+        Shader GLSL100: better material/nodes/fragment/FragmentColor/FragmentColor.frag
+
+        Documentation {
+            Colors fragments with the color passed as input
+        }
+
+        Input {
+            vec4 fragmentColor;
+            vec4 overlayColor;      
+        }
+
+        Output {
+            vec4 outputColor;
+        }
+    }
+}

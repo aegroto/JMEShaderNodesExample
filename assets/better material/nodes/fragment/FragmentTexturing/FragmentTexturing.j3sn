@@ -1,0 +1,20 @@
+ShaderNodeDefinitions {
+    ShaderNodeDefinition FragmentTexturing {      
+        Type: Fragment
+        Shader GLSL100: better material/nodes/fragment/FragmentTexturing/FragmentTexturing.frag
+
+        Documentation {
+            Apply a texture to fragments
+        }
+
+        Input {
+            vec2 texCoord;
+            sampler2D mTex; 
+            float mTexScale;  
+        }
+
+        Output {
+            vec4 outputColor;
+        }
+    }
+}
