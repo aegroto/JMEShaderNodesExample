@@ -43,7 +43,7 @@ public class Main extends SimpleApplication implements AnalogListener {
         mat.setColor("OverlayColor", matColor);
 
         mat.setFloat("TexScale", 1f);
-        mat.setFloat("TransformSpeed", 2f);
+        mat.setFloat("RotationSpeed", 2f);
         mat.setFloat("MeshScale", meshScale);
 
         geom.setMaterial(mat);

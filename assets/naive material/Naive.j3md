@@ -5,7 +5,7 @@ MaterialDef Unshaded {
         Float TexScale : 1.0
         Color OverlayColor
 
-        Float TransformSpeed
+        Float RotationSpeed
 
         Float MeshScale
     }
@@ -25,7 +25,7 @@ MaterialDef Unshaded {
         Defines {
             TEXTURED : Tex
             COLORED : OverlayColor
-            TRANSFORM : TransformSpeed
+            ROTATION : RotationSpeed
             SCALING : MeshScale
         }
     }

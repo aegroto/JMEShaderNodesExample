@@ -1,6 +1,6 @@
 uniform mat4 g_WorldViewProjectionMatrix;
 uniform float g_Time;
-uniform float m_TransformSpeed;
+uniform float m_RotationSpeed;
 uniform float m_MeshScale;
 
 attribute vec3 inPosition;
@@ -15,8 +15,8 @@ void main() {
 
     vec3 vVertex = inPosition;
 
-    #ifdef TRANSFORM
-        float angle = g_Time * m_TransformSpeed;
+    #ifdef ROTATION
+        float angle = g_Time * m_RotationSpeed;
 
         vVertex = vec3(inPosition.x * cos(angle) + inPosition.z * (-sin(angle)),
                        inPosition.y,
